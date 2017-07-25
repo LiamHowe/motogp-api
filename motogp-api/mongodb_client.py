@@ -12,7 +12,7 @@ class MongoDBClient(object):
         return self.sanitize_bson(self.db.riders.find())
 
     def get_rider(self, rider_id):
-        return self.sanitize_bson(self.db.riders.find( { "riderId": rider_id } ))
+        return self.sanitize_bson(self.db.riders.find( { "riderId": int(rider_id) } ))
 
     def sanitize_bson(self, bson):
         return json.loads(json_util.dumps(bson))

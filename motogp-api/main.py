@@ -20,7 +20,7 @@ def get_riders():
 @app.route('/rider/<rider_id>', methods=['GET'])
 def get_rider(rider_id):
 
-    if not isinstance(rider_id, (int, long )):
+    if not str(rider_id).isdigit():
         abort(400)
 
     riders = Riders()

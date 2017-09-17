@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, make_response, abort
+from flask import Flask, jsonify, make_response, abort, request
 from pymongo import MongoClient
 from riders import Riders
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -30,6 +31,27 @@ def get_rider(rider_id):
     else:
         abort(404)
 
+@app.route('/v2/riders')
+def get_riders_v2():
+
+    year = request.args.get('year')
+
+    if year is None:
+        now = datetime.now()
+        year = now.year
+
+    classification = request.args.get('classification')
+
+    if classification is None:
+        classification = 'MotoGP'
+
+    riders = Riders()
+    result = riders.get_riders(year, classification)
+
+    if result:
+        return jsonify(result)
+    else:
+        abort(404)
 
 ''' Error Handlers '''
 

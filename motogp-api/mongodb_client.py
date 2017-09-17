@@ -11,6 +11,21 @@ class MongoDBClient(object):
     def get_riders(self):
         return self.sanitize_bson(self.db.riders.find())
 
+    def get_riders(self, year, classification):
+        return self.sanitize_bson( \
+            self.db.years.find( \
+                { \
+                    "$and": [ \
+                        {"year": int(year)}, \
+                        {"classifications.classification": str(classification)} \
+                    ] \
+                }, \
+                { \
+                    "_id": 0, "classifications": { "$elemMatch": {"classification": str(classification)} } \
+                } \
+            ) \
+        )
+
     def get_rider(self, rider_id):
         return self.sanitize_bson(self.db.riders.find( { "riderId": int(rider_id) } ))
 

@@ -1,0 +1,72 @@
+db.riders.insert(
+[
+{ "riderId" : 5, "name" : "Jorge Lorenzo", "number" : 99 },
+{ "riderId" : 6, "name" : "Dani Pedrosa", "number" : 26},
+{ "riderId" : 7, "name" : "Cal Crutchlow", "number" : 35},
+{ "riderId" : 8, "name" : "Pol Espargaro", "number" : 44},
+{ "riderId" : 9, "name" : "Andrea Iannone", "number" : 29 },
+{ "riderId" : 10, "name" : "Hector Barbera", "number" : 8},
+{ "riderId" : 11, "name" : "Aleix Espargaro", "number" : 41},
+{ "riderId" : 12, "name" : "Alvaro Bautista", "number" : 19},
+{ "riderId" : 13, "name" : "Eugene Laverty", "number" : 50},
+{ "riderId" : 14, "name" : "Danilo Petrucci", "number" : 9},
+{ "riderId" : 15, "name" : "Scott Redding", "number" : 45}])
+db.riders.insert(
+[
+{ "riderId" : 16, "name" : "Stefan Bradl", "number" : 6},
+{ "riderId" : 17, "name" : "Bradley Smith", "number" : 38 },
+{ "riderId" : 18, "name" : "Jack Miller", "number" : 43},
+{ "riderId" : 19, "name" : "Michele Pirro", "number" : 51},
+{ "riderId" : 20, "name" : "Loris Baz", "number" : 76},
+{ "riderId" : 21, "name" : "Tito Rabat", "number" : 53},
+{ "riderId" : 22, "name" : "Yonny Hernandez", "number" : 68},
+{ "riderId" : 23, "name" : "Katsuyuki Nakasuga", "number" : 21},
+{ "riderId" : 24, "name" : "Alex Lowes", "number" : 22},
+{ "riderId" : 25, "name" : "Hiroshi Aoyama", "number" : 7}]),
+db.riders.insert(
+[
+{ "riderId" : 26, "name" : "Nicky Hayden", "number" : 69 },
+{ "riderId" : 27, "name" : "Mike Jones", "number" : 7},
+{ "riderId" : 28, "name" : "Mika Kallio", "number" : 36}
+]
+)
+
+
+db.riders.find({riderId: {$exists: true}}).forEach(function (x) {
+  x.riderId = NumberInt(x.riderId);
+  x.number = NumberInt(x.number);
+  db.riders.save(x);
+});
+
+db.riders.find({number: {$exists: true}}).forEach(function (x) {
+  x.number = NumberInt(x.number);
+  db.riders.save(x);
+});
+
+{
+  "year": 2016,
+  "classifications": [
+    {
+      "classification": "MotoGP",
+      "riders": [
+        {
+          "riderId": 1,
+          "name": "Valentino Rossi",
+          "dateOfBirth": "16/02/1979",
+          "nationality": "Italian",
+          "number": 46,
+          "team": "Movistar Yamaha MotoGP"
+        }
+      ]
+    }
+  ]
+}
+
+{  "year": 2016, "classifications": [{"classification": "MotoGP","riders": [{"riderId": 1,"name": "Valentino Rossi","dateOfBirth": "16/02/1979","nationality": "Italian","number": 46,"team": "Movistar Yamaha MotoGP"}]}]}
+
+db.years.insert({  "year": 2015, "classifications": [{"classification": "MotoGP","riders": [{"riderId": 4,"name": "Scott Redding","dateOfBirth": "04/01/1993","nationality": "British","number": 45,"team": "EG 0,0 Marc VDS"}]}]})
+
+
+db.years.update({_id: ObjectId("59ac211c0df83a43c4fd6f98"), "classifications.classification": "MotoGP"}, {$push: {"classifications.$.riders": {"riderId": 2, "name": "Marc Marquez", "dateOfBirth": "17/02/1993","nationality": "Spanish", "number": 93, "team": "Repsol Honda Team"}}})
+
+db.years.find({"classifcations.classification": "MotoGP"},{_id: 0, classifcations: {$elemMatch: {classification: "MotoGP"}}});

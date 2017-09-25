@@ -1,4 +1,5 @@
 from sql_client import SQLClient
+from mongodb_client import MongoDBClient
 
 hostname = 'localhost'
 username = 'root'
@@ -16,5 +17,6 @@ if(__name__ == "__main__"):
 
     result_set = sql_client.get_riders_for_year()
 
-    for year, classification, rider_name, rider_date_of_birth, team, manufacturer, number in result_set :
-        print year, classification, rider_name, rider_date_of_birth, team, manufacturer, number
+    mongodb_client = MongoDBClient()
+
+    mongodb_client.insert_years_and_rider(result_set)

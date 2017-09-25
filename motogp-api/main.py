@@ -45,6 +45,8 @@ def get_riders_v2():
     if classification is None:
         classification = 'MotoGP'
 
+    print year, classification
+
     riders = Riders()
     result = riders.get_riders(year, classification)
 
@@ -66,3 +68,6 @@ def not_found(error):
 @app.errorhandler(400)
 def not_found(error):
     return make_response(jsonify({"error": "Bad Request", "output": str(error)}), 400)
+
+if __name__ == '__main__':
+    app.run()

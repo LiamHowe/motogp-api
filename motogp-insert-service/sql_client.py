@@ -20,13 +20,14 @@ class SQLClient(object):
         cursor = conn.cursor()
 
         get_riders_for_years_query = \
-            "SELECT yr.year, \n \
-    	        c.name AS classification, \n \
-    	        r.name AS rider_name, \n \
-            	r.date_of_birth AS rider_date_of_birth, \n \
-            	t.name AS team, \n \
-            	m.name AS manufacturer, \n \
-            	yr.number \n \
+            "SELECT yr.year AS rs_year, \n \
+    	        c.name AS rs_classification, \n \
+                r.id AS rs_rider_id, \n \
+    	        r.name AS rs_rider_name, \n \
+            	r.date_of_birth AS rs_rider_date_of_birth, \n \
+            	t.name AS rs_team, \n \
+            	m.name AS rs_manufacturer, \n \
+            	yr.number AS rs_number \n \
             FROM year_riders yr \n \
             	JOIN teams t ON t.id = yr.team_id \n \
             	JOIN riders r ON r.id = yr.rider_id \n \

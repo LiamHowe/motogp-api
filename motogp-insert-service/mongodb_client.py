@@ -35,24 +35,15 @@ class MongoDBClient(object):
                 classifications.append(classification)
 
             rider = Rider(
-                int(rs_rider_id),
+                rs_rider_id,
                 rs_rider_name,
-                int(rs_number),
-                str(rs_rider_date_of_birth),
+                rs_number,
+                rs_rider_date_of_birth,
                 rs_manufacturer,
                 rs_team
             )
 
-            '''rider = {
-                "riderId": int(rs_rider_id),
-                "name": rs_rider_name,
-                "dateOfBirth": str(rs_rider_date_of_birth),
-                "team": rs_team,
-                "manufacturer": rs_manufacturer,
-                "number": int(rs_number)
-            }   '''
-
-            classification["riders"].append(rider)
+            classification["riders"].append(rider.__dict__)
 
         print json.dumps(years, indent=1)
 

@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from bson import json_util
 import json
-from .models.rider import Rider
+from models.rider import Rider
 
 class MongoDBClient(object):
 

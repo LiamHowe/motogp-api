@@ -1,5 +1,6 @@
-from sql_client import SQLClient
 from mongodb_client import MongoDBClient
+from sql_client import SQLClient
+from mappers.years_mapper import YearsMapper
 
 hostname = 'localhost'
 username = 'root'
@@ -14,9 +15,12 @@ if(__name__ == "__main__"):
         password,
         database
     )
+    mongodb_client = MongoDBClient()
 
     result_set = sql_client.get_riders_for_year()
 
-    mongodb_client = MongoDBClient()
+    years_mapper = YearsMapper()
 
-    mongodb_client.insert_years_and_rider(result_set)
+    years = years_mapper.map_years_for_riders(result_set)
+
+    mongodb_client.insert_years_and_rider(years)

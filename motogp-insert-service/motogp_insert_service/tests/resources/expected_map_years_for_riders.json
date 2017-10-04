@@ -1,0 +1,90 @@
+{
+ "2016": {
+  "classifications": [
+   {
+    "riders": [
+     {
+      "riderId": 2,
+      "name": "Marc Marquez",
+      "number": 93,
+      "dateOfBirth": "1993-02-17",
+      "team": "Repsol Honda Team",
+      "manufacturer": "Honda"
+     },
+     {
+      "riderId": 1,
+      "name": "Valentino Rossi",
+      "number": 46,
+      "dateOfBirth": "1979-02-16",
+      "team": "Movistar Yamaha MotoGP",
+      "manufacturer": "Yamaha"
+     }
+    ],
+    "classification": "MotoGP"
+   },
+   {
+    "riders": [
+     {
+      "riderId": 3,
+      "name": "Alex Marquez",
+      "number": 73,
+      "dateOfBirth": "1996-04-23",
+      "team": "EG 0,0 Marc VDS",
+      "manufacturer": "Kalex"
+     }
+    ],
+    "classification": "Moto2"
+   }
+  ],
+  "year": 2016
+ },
+ "2017": {
+  "classifications": [
+   {
+    "riders": [
+     {
+      "riderId": 3,
+      "name": "Alex Marquez",
+      "number": 73,
+      "dateOfBirth": "1996-04-23",
+      "team": "EG 0,0 Marc VDS",
+      "manufacturer": "Kalex"
+     }
+    ],
+    "classification": "Moto2"
+   }
+  ],
+  "year": 2017
+ },
+ "2015": {
+  "classifications": [
+   {
+    "riders": [
+     {
+      "riderId": 2,
+      "name": "Marc Marquez",
+      "number": 93,
+      "dateOfBirth": "1993-02-17",
+      "team": "Repsol Honda Team",
+      "manufacturer": "Honda"
+     }
+    ],
+    "classification": "MotoGP"
+   },
+   {
+    "riders": [
+     {
+      "riderId": 3,
+      "name": "Alex Marquez",
+      "number": 73,
+      "dateOfBirth": "1996-04-23",
+      "team": "EG 0,0 Marc VDS",
+      "manufacturer": "Kalex"
+     }
+    ],
+    "classification": "Moto2"
+   }
+  ],
+  "year": 2015
+ }
+}
